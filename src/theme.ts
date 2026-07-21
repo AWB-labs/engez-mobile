@@ -1,4 +1,4 @@
-// Sahra design tokens — the single source of truth for the whole app.
+// Engez design tokens — the single source of truth for the whole app.
 // Khamen reskin: the warm dark ahwa is gone; the game now plays on a vivid
 // violet stage with white paper cards and one amber CTA. Three ground rules
 // carried over from the original system:
@@ -180,7 +180,7 @@ export const font = {
  * descent 0.588em = 1.567em (hhea, OS/2 typo and win all agree). RN centres
  * the font's line box inside whatever `lineHeight` we set and CLIPS the
  * overflow, so any display text below this ratio loses the tops of its
- * ascenders — 'h' in Sahra, 'bb' in Lobby, every Arabic form. Rounded up to
+ * ascenders — the 'bb' in Lobby, every Arabic form. Rounded up to
  * a flat 1.6 so the numbers stay legible and the margin is real.
  *
  * Rubik needs only 1.185em, which every body token already clears.

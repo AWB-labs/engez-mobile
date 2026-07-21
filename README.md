@@ -1,8 +1,8 @@
-# Sahra — Team Taboo mobile
+# Engez — Team Taboo mobile
 
 The native mobile client for **Team Taboo**, built with Expo (SDK 54, React
 Native, TypeScript). It speaks the same WebSocket protocol to the same
-Cloudflare Worker + Durable Object rooms as the web app — a phone on Sahra and
+Cloudflare Worker + Durable Object rooms as the web app — a phone on Engez and
 a laptop on the web client can play in the same room. The server lives in the
 separate `team-taboo` repo and is **not** part of this one.
 
@@ -31,7 +31,7 @@ player intents back. It never scores a guess or advances a phase locally.
 App.tsx                Screen router + app shell (sound/haptic hooks, mute)
 src/
   config.ts            Server origin wiring (env → app.json fallback), WS/room URLs
-  theme.ts             "Sahra" design tokens — colors, type, depth, motion, spacing
+  theme.ts             "Khamen" design tokens — colors, type, depth, motion, spacing
   lib/
     protocol.ts        Typed wire contract with the Durable Object (types only)
     useGame.ts         The connection: WebSocket + reconnect/backoff, heartbeat,
@@ -69,17 +69,16 @@ bundler).
 
 ## Design system
 
-The visual language is **"Sahra"** (سهرة — an Egyptian night out): warm
-ahwa-at-night darks, brass, teal, khayamiya undertones. All tokens live in
-`src/theme.ts`, ported from the web repo's `DESIGN.md` with **two deliberate
-amendments**:
+The visual language is **"Khamen"**: a vivid violet stage, white paper cards
+and one amber CTA. All tokens live in `src/theme.ts`, ported from the web
+repo's `DESIGN.md` with **two deliberate amendments**:
 
 1. **No emoji.** Every pictograph in the spec is a `lucide-react-native` icon
    at a fixed stroke weight.
-2. **No glow/neon.** The spec's accent blooms are replaced by layered warm
-   depth: brown-black directional shadows, a 1px top-light, and accent
-   washes/rings (`accentSurface`) — accents desaturated to read as painted
-   woodwork, not LED.
+2. **No glow/neon.** The spec's accent blooms are replaced by layered depth:
+   a soft indigo-tinted directional shadow, a 1px top-light, and accent
+   washes/rings (`accentSurface`) — accents render as solid pastels, never a
+   bloom.
 
 Nothing outside `theme.ts` hardcodes a color, radius, duration or size.
 

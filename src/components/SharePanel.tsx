@@ -22,7 +22,7 @@ export default function SharePanel({ code }: SharePanelProps) {
   const copiedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const url = joinLink(code);
-  const shareText = `Join my Sahra game! Tap to enter (code ${code}): ${url}`;
+  const shareText = `Join my Engez game! Tap to enter (code ${code}): ${url}`;
 
   useEffect(
     () => () => {

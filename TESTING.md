@@ -68,7 +68,7 @@ is fine and worth testing). All devices on the same server
 ## 8. Resilience
 
 - [ ] **Lock mid-turn:** lock Phone B during a turn for ~20s → unlock → reconnect banner appears briefly → state restored (current words, score, timer all correct).
-- [ ] **Kill app:** swipe Sahra away mid-game → reopen → brief restoring splash → auto-rejoins the same room as the same player via the stored session.
+- [ ] **Kill app:** swipe Engez away mid-game → reopen → brief restoring splash → auto-rejoins the same room as the same player via the stored session.
 - [ ] Guesses queued while offline are either sent on reconnect or cleanly dropped — no crash, no phantom scores.
 - [ ] **Leave room** → back at Home; other devices see the player gone; reopening the app does **not** rejoin the left room.
 - [ ] Host leaving doesn't strand the room (players can still leave/finish; rejoin works).
