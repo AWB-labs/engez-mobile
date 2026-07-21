@@ -156,7 +156,7 @@ export default function Home({ status, error, actions }: HomeProps) {
       {/* Poster hero */}
       <View style={styles.hero}>
         <Text style={styles.wordmark} accessibilityRole="header">
-          Engez
+          Khammen
         </Text>
         <Animated.View style={[styles.sweep, sweepStyle]} />
         <Text style={styles.pitch}>Describe the words. Beat the clock. Win as a team.</Text>

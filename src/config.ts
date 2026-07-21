@@ -17,12 +17,12 @@ const RAW_SERVER_URL = process.env.EXPO_PUBLIC_SERVER_URL || fromExtra || '';
 
 if (!RAW_SERVER_URL) {
   console.warn(
-    '[engez] No server URL configured. Set EXPO_PUBLIC_SERVER_URL in .env ' +
+    '[khammen] No server URL configured. Set EXPO_PUBLIC_SERVER_URL in .env ' +
       'or expo.extra.serverUrl in app.json.',
   );
 }
 
-/** Origin with any trailing slash removed, e.g. `https://engez.example.workers.dev`. */
+/** Origin with any trailing slash removed, e.g. `https://khammen.example.workers.dev`. */
 export const SERVER_URL = RAW_SERVER_URL.replace(/\/+$/, '');
 
 /** `wss://…` for https origins, `ws://…` for plain http (LAN dev). */

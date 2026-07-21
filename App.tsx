@@ -289,7 +289,7 @@ function Shell() {
 function Splash() {
   return (
     <View style={styles.splash}>
-      <Text style={styles.splashWordmark}>Engez</Text>
+      <Text style={styles.splashWordmark}>Khammen</Text>
       <Text style={styles.splashCaption}>Loading…</Text>
     </View>
   );

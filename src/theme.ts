@@ -1,4 +1,4 @@
-// Engez design tokens — the single source of truth for the whole app.
+// Khammen design tokens — the single source of truth for the whole app.
 // Khamen reskin: the warm dark ahwa is gone; the game now plays on a vivid
 // violet stage with white paper cards and one amber CTA. Three ground rules
 // carried over from the original system:

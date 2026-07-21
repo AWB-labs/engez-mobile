@@ -1,8 +1,8 @@
-# Engez — Team Taboo mobile
+# Khammen — Team Taboo mobile
 
 The native mobile client for **Team Taboo**, built with Expo (SDK 54, React
 Native, TypeScript). It speaks the same WebSocket protocol to the same
-Cloudflare Worker + Durable Object rooms as the web app — a phone on Engez and
+Cloudflare Worker + Durable Object rooms as the web app — a phone on Khammen and
 a laptop on the web client can play in the same room. The server lives in the
 separate `team-taboo` repo and is **not** part of this one.
 
