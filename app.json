@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "Khammen",
-    "slug": "team-taboo-mobile",
+    "slug": "khammen",
+    "owner": "awb-expo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -40,7 +41,10 @@
       "expo-asset"
     ],
     "extra": {
-      "serverUrl": "https://team-taboo-araby.ziagobelaraby.workers.dev"
+      "serverUrl": "https://team-taboo-araby.ziagobelaraby.workers.dev",
+      "eas": {
+        "projectId": "5c7c0b57-bce8-40d4-b638-b84c0601bbe6"
+      }
     }
   }
 }
