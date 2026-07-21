@@ -16,13 +16,13 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "vc.tsk.sahra",
+      "bundleIdentifier": "com.AWB.khammen",
       "infoPlist": {
         "UIViewControllerBasedStatusBarAppearance": false
       }
     },
     "android": {
-      "package": "vc.tsk.sahra",
+      "package": "com.AWB.khammen",
       "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "backgroundColor": "#6A5CFF",
