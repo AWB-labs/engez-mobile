@@ -15,11 +15,9 @@
 // seconds becomes a pulsing 3px amber border — depth and urgency without a
 // single accent shadow.
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   FlatList,
-  KeyboardAvoidingView,
-  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -430,6 +428,11 @@ function GuesserView({
   const danger = remaining != null && remaining <= 10;
   const solved = turn.solvedCount || 0;
 
+  // Newest first. The input is pinned at the top so the keyboard can never
+  // cover it, which means the freshest verdict has to land directly under it
+  // — at the far end of the list it would open behind the keyboard.
+  const feed = useMemo(() => [...entries].reverse(), [entries]);
+
   // A fresh turn is a fresh scratchpad.
   useEffect(() => {
     setEntries([]);
@@ -553,11 +556,11 @@ function GuesserView({
         </Animated.View>
       )}
 
-      <KeyboardAvoidingView
-        style={styles.fill}
-        // Android resizes via the manifest (§3); only iOS needs help here.
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      >
+      {/* No KeyboardAvoidingView: the input sits at the top, above where the
+          keyboard can ever reach, so nothing needs to be pushed out of its
+          way. Letting the layout stay put also stops the header and score
+          strip lurching every time the keyboard opens. */}
+      <View style={styles.fill}>
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             <Chip label="Guess the words" accent={color.violet} icon={Keyboard} />
@@ -577,33 +580,6 @@ function GuesserView({
         <ScoreStrip teams={state.teams} activeTeamId={turn.teamId} />
 
         <ProgressDots total={turn.total} solved={solved} />
-
-        <FlatList
-          ref={listRef}
-          data={entries}
-          keyExtractor={(e) => e.id}
-          renderItem={renderEntry}
-          style={styles.fill}
-          contentContainerStyle={styles.scratchpadContent}
-          showsVerticalScrollIndicator={false}
-          keyboardShouldPersistTaps="handled"
-          // Newest guess always lands in view — scroll once the append has
-          // actually resized the content, exactly like the web's scrollTop.
-          onContentSizeChange={() => listRef.current?.scrollToEnd({ animated: !reduceMotion })}
-          ListEmptyComponent={
-            <View style={styles.empty}>
-              <Text style={styles.emptyText}>
-                Shout out guesses as single words — type each one and send it.
-              </Text>
-              <Text style={styles.emptyText}>
-                <Text style={styles.emptyStrong}>
-                  franco or <Text style={styles.rtl}>عربي</Text> — both count!
-                </Text>
-                {' '}Unlimited tries.
-              </Text>
-            </View>
-          }
-        />
 
         <View style={styles.inputRow}>
           <TextInput
@@ -626,7 +602,37 @@ function GuesserView({
           />
           <SendButton onPress={submit} />
         </View>
-      </KeyboardAvoidingView>
+
+        <FlatList
+          ref={listRef}
+          data={feed}
+          keyExtractor={(e) => e.id}
+          renderItem={renderEntry}
+          style={styles.fill}
+          contentContainerStyle={styles.scratchpadContent}
+          showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="handled"
+          // Newest guess always lands in view — the feed is newest-first, so
+          // that's the top of the list, right beneath the input.
+          onContentSizeChange={() =>
+            listRef.current?.scrollToOffset({ offset: 0, animated: !reduceMotion })
+          }
+          ListEmptyComponent={
+            <View style={styles.empty}>
+              <Text style={styles.emptyText}>
+                Shout out guesses as single words — type each one and send it.
+              </Text>
+              <Text style={styles.emptyText}>
+                <Text style={styles.emptyStrong}>
+                  franco or <Text style={styles.rtl}>عربي</Text> — both count!
+                </Text>
+                {' '}Unlimited tries.
+              </Text>
+            </View>
+          }
+        />
+
+      </View>
 
       <ConfettiOverlay ref={confettiRef} />
       <EdgePulse active={danger} />
